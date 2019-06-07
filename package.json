@@ -1,0 +1,11 @@
+{
+  "name": "webdb-challenge",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/joerlop/webdb-challenge.git",
+  "author": "joerlop <jj.erlich155@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "server": "nodemon index.js"
+  }
+}
