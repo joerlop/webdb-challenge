@@ -25,4 +25,5 @@ function getProject(id) {
 function getActionsByProjectId(id) {
   return db("actions")
   .where({ "actions.project_id": id })
+  .select("actions.id", "actions.description", "actions.notes", "actions.completed");
 }
