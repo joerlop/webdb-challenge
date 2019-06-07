@@ -3,7 +3,8 @@ const db = require('./dbConfig');
 module.exports = {
   getProject,
   addProject,
-  addAction
+  addAction,
+  getActionsByProjectId
 };
 
 function addProject(project) {
@@ -18,6 +19,10 @@ function addAction(action) {
 
 function getProject(id) {
   return db("projects")
-    .where({ "projects.id": id })
-    .join("actions", { "projects.id": "actions.project_id" })
+  .where({ "projects.id": id })
+}
+
+function getActionsByProjectId(id) {
+  return db("actions")
+  .where({ "actions.project_id": id })
 }

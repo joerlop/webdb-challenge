@@ -32,7 +32,22 @@ server.post('/api/actions', (req, res) => {
 server.get('/api/projects/:id', (req, res) => {
   db.getProject(req.params.id)
   .then(project => {
+    db.getActionsByProjectId(req.params.id)
+    .then(actions => {
+      project[0].actions = actions
       res.status(200).json(project)
+    }).catch(err => {
+      res.status(500).json(err)
+    })
+  }).catch(err => {
+    res.status(500).json(err)
+  })
+});
+
+server.get('/api/projects/:id/actions', (req, res) => {
+  db.getActionsByProjectId(req.params.id)
+  .then(actions => {
+      res.status(200).json(actions)
   }).catch(err => {
     res.status(500).json(err)
   })
